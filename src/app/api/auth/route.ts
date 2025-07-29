@@ -12,5 +12,5 @@ export async function POST(req: Request) {
   }
 
   // NOTE: For real apps, use bcrypt for password & next-auth/jwt for sessions
-  return NextResponse.json({ message: 'Login successful' });
+  return NextResponse.json({ message: 'Login successful',data : user }, { status: 200 });
 }
