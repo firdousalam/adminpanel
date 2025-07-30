@@ -1,12 +1,35 @@
-export default function DashboardPage() {
+'use client';
+
+import { useEffect, useState } from 'react';
+import {Booking} from '@/types/Booking';
+import BookingTable from '@/components/layout/BookingTable';
+const BookingService = require('@/services/BookingService');
+export default function BookingPage() {
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      setLoading(true);
+      const data = await BookingService.fetchBookings();
+      setBookings(data.data);
+      setLoading(false);
+    };
+    fetchBookings();
+  }, []);
+
   return (
-    <div>
-      <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="bg-white p-4 shadow rounded">Users: 120</div>
-        <div className="bg-white p-4 shadow rounded">Sales: ₹25,000</div>
-        <div className="bg-white p-4 shadow rounded">Growth: 12%</div>
-      </div>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Booking Detail</h1>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : bookings.length === 0 ? (
+        <p>No bookings found.</p>
+      ) : (
+            <BookingTable bookings={bookings} />
+      )}
     </div>
   );
 }
