@@ -3,5 +3,5 @@ export type Booking = {
   patientId: string;
   appointmentDate: string;
   status: string;
-  consultationMode: string;
+  consultationMode ?: string;
 };

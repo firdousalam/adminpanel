@@ -16,7 +16,6 @@ export default function BookingPage() {
     };
 
   useEffect(() => {
-    
     fetchBookings();
   }, []);
 

@@ -22,11 +22,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // login variable checking from redux
+  // const isLogin = useSelector((state: RootState) => state.auth.isLogin);
+  // if (!isLogin) {
+  //   return <Redirect to="/login" />;
+  
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        
         {children}
       </body>
     </html>
