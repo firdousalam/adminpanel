@@ -5,4 +5,4 @@ import { ReadableStreamDefaultController } from "stream/web";
       const res = await fetch('https://getphysio.in/api/appointments/getAll');
       return await res.json();
     
-    };
+};
