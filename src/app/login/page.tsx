@@ -2,10 +2,18 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAppContext } from "@/context/AppContext";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@/store/store';
+import { setUser } from '@/store/userSlice'; // Ensure this is the action creator, not the reducer
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
+    const { userByContext, setUserByContext } = useAppContext();
+    
+  const dispatch = useDispatch();
+
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,6 +30,9 @@ export default function LoginPage() {
       setError(data.message);
     } else {
       router.push('/dashboard'); // redirect to protected route
+      setUserByContext("Firdous"); // Set user context
+      dispatch(setUser('Technophile Firdous'));
+
     }
   };
 
