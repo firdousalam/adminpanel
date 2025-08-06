@@ -16,7 +16,7 @@ export default function BookingPage() {
     const fetchBookings = async () => {
         setLoading(true);
         const data = await BookingService.fetchBookings();
-        setBookings(data.data);
+        setBookings(data.data); // update state with fetched bookings
         setLoading(false);
     };
 

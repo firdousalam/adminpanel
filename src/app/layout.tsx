@@ -34,8 +34,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         
         
-       <ReduxProvider><AppProvider>{children}</AppProvider></ReduxProvider> 
+            <ReduxProvider><AppProvider>{children}</AppProvider></ReduxProvider> 
+          
       </body>
     </html>
   );

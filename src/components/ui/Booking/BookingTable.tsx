@@ -1,13 +1,17 @@
-
+"use client"
 import { Booking } from '@/types/Booking';
+import { useRouter } from "next/navigation";
 import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
-
+ 
 export default function BookingTable(bookings: {
     [x: string]: any; bookings: Booking[]
 }) {
+
+     const router = useRouter();
     const handleView = (id: string) => {
         console.log("View booking with ID:", id);
         // Implement view logic here
+         router.push(`/booking/dashboard/${id}`);
     };
     const handleEdit = (id: string) => {
         console.log("Edit booking with ID:", id);
